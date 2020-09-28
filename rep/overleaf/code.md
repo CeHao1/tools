@@ -1,0 +1,19 @@
+## add single figure
+\begin{figure}[t]
+    \centering
+    \includegraphics[scale=0.4]{figure/beta.png}
+    \caption{Slip and drifting effect}
+    \label{fig:beta}
+\end{figure}
+
+## one column
+\begin{figure*}
+
+## subfigures
+\begin{figure*}[bp]
+    \centering
+    \subfigure[Velocity Profile]{\includegraphics[scale=0.3]{figure/T_Vx.pdf}}
+    \subfigure[Curvature]{\includegraphics[scale=0.3]{figure/T_kap.pdf}}
+    \caption{123}
+    \label{fig:GTS}
+\end{figure*}
