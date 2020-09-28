@@ -10,6 +10,7 @@
 \begin{figure*}
 
 ## subfigures
+\usepackage{subfigure}
 \begin{figure*}[bp]
     \centering
     \subfigure[Velocity Profile]{\includegraphics[scale=0.3]{figure/T_Vx.pdf}}
