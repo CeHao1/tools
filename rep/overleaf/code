@@ -1,4 +1,5 @@
 ## add single figure
+\usepackage{graphicx}
 \begin{figure}[t]
     \centering
     \includegraphics[scale=0.4]{figure/beta.png}
