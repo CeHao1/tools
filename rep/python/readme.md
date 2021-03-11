@@ -7,3 +7,6 @@ https://matplotlib.org/2.0.2/api/lines_api.html
 
 ## color of matplotlib
 https://matplotlib.org/stable/gallery/color/named_colors.html
+
+## plot rectangle 
+https://www.cnblogs.com/ivyharding/p/12731205.html
