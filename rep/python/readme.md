@@ -10,3 +10,9 @@ https://matplotlib.org/stable/gallery/color/named_colors.html
 
 ## plot rectangle 
 https://www.cnblogs.com/ivyharding/p/12731205.html
+
+## matplotlib animation
+https://blog.csdn.net/weixin_33895695/article/details/87990582
+https://blog.csdn.net/briblue/article/details/84940997
+https://www.cnblogs.com/endlesscoding/p/10308111.html
+https://blog.csdn.net/beautiful77moon/article/details/97559622
