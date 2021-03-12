@@ -16,3 +16,9 @@ https://blog.csdn.net/weixin_33895695/article/details/87990582
 https://blog.csdn.net/briblue/article/details/84940997
 https://www.cnblogs.com/endlesscoding/p/10308111.html
 https://blog.csdn.net/beautiful77moon/article/details/97559622
+
+## matplotlib save video
+https://www.cnblogs.com/hzcya1995/p/13281715.html
+
+## matplotlib subplots with different shapes
+https://www.cnblogs.com/pingwen/p/12027703.html
