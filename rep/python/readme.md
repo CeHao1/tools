@@ -36,6 +36,7 @@ https://zhuanlan.zhihu.com/p/101645294
 
 ### scipy.optimize.minimize
 https://www.jb51.net/article/180064.htm
+https://blog.csdn.net/qq_38048756/article/details/103208834
 
 ### scipy.optimize.leastsq
 https://blog.csdn.net/weixin_44794704/article/details/89215978
