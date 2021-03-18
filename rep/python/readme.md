@@ -33,3 +33,6 @@ http://www.cocoachina.com/articles/92649
 # optimization
 ## scipy.optimize
 https://zhuanlan.zhihu.com/p/101645294
+
+## scipy.optimize.minimize
+https://blog.csdn.net/sinat_17697111/article/details/81534935
