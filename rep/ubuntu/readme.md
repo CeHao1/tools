@@ -23,3 +23,7 @@ https://my.oschina.net/u/4437065/blog/3153449
 
 ### 6. electron-ssr 安装  
 （1）安装：https://www.jianshu.com/p/fba8637da1e3?from=timeline&isappinstalled=0  
+
+### 7. proxychains 安装
+（1）下载安装：https://www.oneone.moe/576.html
+（2）测试：https://blog.csdn.net/lan120576664/article/details/100784380
