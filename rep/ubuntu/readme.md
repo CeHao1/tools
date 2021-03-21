@@ -27,3 +27,4 @@ https://my.oschina.net/u/4437065/blog/3153449
 ### 7. proxychains 安装
 （1）下载安装：https://www.oneone.moe/576.html  
 （2）测试：https://blog.csdn.net/lan120576664/article/details/100784380
+（3）git clone 问题：https://blog.csdn.net/baidu_36482169/article/details/82818490
