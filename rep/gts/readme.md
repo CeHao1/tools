@@ -3,7 +3,8 @@
 ## initialize and set car/ course type
 
 
-`<from gym_gts import GTSApi 
+`<hello world
+from gym_gts import GTSApi 
 with GTSApi(ip="192.168.124.34") as gts_api:  
   num_cars=1,  
   tires="SH",  
