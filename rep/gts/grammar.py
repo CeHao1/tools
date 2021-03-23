@@ -7,7 +7,7 @@ with GTSApi(ip="192.168.124.34") as gts_api:
   num_cars=1,
   gts_api.set_race(
     tires="SH",
-    ar_codes=3298,
+    car_codes=3298,
     bops={"enable": True, "power": 105, "weight": 100},
     course_code=351
   )
