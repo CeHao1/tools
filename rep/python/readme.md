@@ -43,3 +43,6 @@ https://blog.csdn.net/qq_38048756/article/details/103208834
 
 ### scipy.optimize.leastsq
 https://blog.csdn.net/weixin_44794704/article/details/89215978
+
+# 多继承
+https://blog.csdn.net/qq_26442553/article/details/81775449  
