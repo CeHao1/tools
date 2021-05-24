@@ -2,6 +2,9 @@
 # Unofficial Windows Binaries for Python Extension Packages
 https://www.lfd.uci.edu/~gohlke/pythonlibs/
 
+## learning
+http://liao.cpython.org/  
+
 ## legend of matplotlib
 https://blog.csdn.net/helunqu2017/article/details/78641290/
 
