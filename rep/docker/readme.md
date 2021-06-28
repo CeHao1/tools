@@ -1,8 +1,9 @@
 ### jupyter
 
-1. 搜索dockerimages  
+1. 搜索docker images  
 docker search jupyter
 (1) jupyter/datascience-notebook， (2)jupyter/minimal-notebook 这两个都可以选。 minimal 基础包更少一些。  
+然后使用 docker pull jupyter/datascience-notebook
 
 2. 创建container 
 直接进去就是root，建议用这个   
