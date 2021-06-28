@@ -1,12 +1,18 @@
 ### jupyter
 
-直接进去就是root，建议用这个  
+1. 搜索dockerimages  
+docker search jupyter
+(1) jupyter/datascience-notebook， (2)jupyter/minimal-notebook 这两个都可以选。 minimal 基础包更少一些。  
+
+2. 创建container 
+直接进去就是root，建议用这个   
 docker run -itd --name=ipy --user root -p 8888:8888 -v /home/**tusimple**/work:/home/jovyan/work jupyter/datascience-notebook:latest bash
 
+将 **tusimple** 换成自己本地的地址  
 
-然后用 jupyter notebook --allow-root
+3. 然后用 jupyter notebook --allow-root  
 
-进入后允许sudo  
+备用： 进入后允许sudo  
 docker run -itd --name=ipy -e GRANT_SUDO=yes  -p 8888:8888 -v /home/tusimple/work:/home/jovyan/work jupyter/datascience-notebook:latest bash
 
 ### 镜像源
