@@ -13,7 +13,7 @@ docker run -itd --name=ipy --user root -p 8888:8888 -v /home/**tusimple**/work:/
 
 3. 然后用 jupyter notebook --allow-root  
 
-4. 最有一个地址Link， 复制到浏览器打开。或者 ctrl+左键 点击打开。   
+4. 最后一个地址Link， 复制到浏览器打开。或者 ctrl+左键 点击打开。   
 
 备用： 进入后允许sudo  
 docker run -itd --name=ipy -e GRANT_SUDO=yes  -p 8888:8888 -v /home/tusimple/work:/home/jovyan/work jupyter/datascience-notebook:latest bash
