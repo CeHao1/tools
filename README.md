@@ -5,3 +5,7 @@
 https://blog.csdn.net/thinszx/article/details/104601606
 3. we need to activate and source ~/.zshrc
 
+
+# pyproject.toml-based
+which is required to install pyproject.toml-based projects
+
