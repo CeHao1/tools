@@ -1,1 +1,1 @@
-#how to install mujoco
+# how to install mujoco
