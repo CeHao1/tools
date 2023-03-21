@@ -12,4 +12,10 @@ for mpi4py;  https://stackoverflow.com/questions/28440834/error-when-installing-
 sudo apt-get install libopenmpi-dev
 
 # gcc
-distutils.errors.CompileError: command '/usr/bin/gcc' failed with exit code 1
+fatal error: GL/glew.h: No such file or directory  #include <GL/glew.h>
+distutils.errors.CompileError: command '/usr/bin/gcc' failed with exit code 1  
+
+solution： https://github.com/openai/mujoco-py/issues/745
+``` 
+sudo apt-get install libglew-dev
+```
