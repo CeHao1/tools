@@ -1,3 +1,12 @@
+# deep learning
+* deep leaning (coursera)
+
+# optimization
+* EE227AT (UCB)
+
+# RL
+* cs285 (UCB)
+
 cs294-112 the course contains more information about RL and iRL
 http://rail.eecs.berkeley.edu/deeprlcourse-fa18/
 

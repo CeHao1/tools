@@ -1,6 +1,5 @@
-
 # How to set up mujoco
-1. download and copy to .mujoco
+1. download and copy to .mujoco, also install mujoco_py. import mujoco_py and get path to add.
 2. and the path to .bashrc, but when using conda, we need to update the .zshrc
 https://blog.csdn.net/thinszx/article/details/104601606
 3. we need to activate and source ~/.zshrc

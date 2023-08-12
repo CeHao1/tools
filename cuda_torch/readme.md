@@ -1,8 +1,0 @@
-## check cuda
-```
-torch.cuda.is_available()
-```
-
-
-## watch gpu
-`watch -n 0.5 nvidia-smi`

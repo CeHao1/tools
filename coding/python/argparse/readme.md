@@ -21,6 +21,7 @@ python file_name.py --argname 1 --boolean_arg
 1. first switch to the debug mode in the left column  
 2. add the launch.json  
 3. set the "python" to be the address of interpreter, e.g. `/anaconda3/envs/py37/bin/python`  
+Or select python interpretor ctrl+shift+p.
 4. add "args" : ["--argname", "1"]  
 
 
