@@ -15,3 +15,56 @@ http://rail.eecs.berkeley.edu/deeprlcourse/
 
 cs287 advanced robotics
 https://people.eecs.berkeley.edu/~pabbeel/cs287-fa19/
+
+
+
+# Unofficial Windows Binaries for Python Extension Packages
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+## learning
+http://liao.cpython.org/  
+
+## legend of matplotlib
+https://blog.csdn.net/helunqu2017/article/details/78641290/
+
+## setting of matplotlib
+https://matplotlib.org/2.0.2/api/lines_api.html
+
+### color of matplotlib
+https://matplotlib.org/stable/gallery/color/named_colors.html
+
+### plot rectangle 
+https://www.cnblogs.com/ivyharding/p/12731205.html
+
+### matplotlib animation
+https://blog.csdn.net/weixin_33895695/article/details/87990582  
+https://blog.csdn.net/briblue/article/details/84940997  
+https://www.cnblogs.com/endlesscoding/p/10308111.html  
+https://blog.csdn.net/beautiful77moon/article/details/97559622  
+
+### matplotlib save video
+https://www.cnblogs.com/hzcya1995/p/13281715.html
+
+### matplotlib subplots with different shapes
+https://www.cnblogs.com/pingwen/p/12027703.html
+https://blog.csdn.net/weixin_45126474/article/details/107923454
+
+### matplotlib text box
+https://blog.csdn.net/hot7732788/article/details/90070618
+https://blog.csdn.net/sinat_28442665/article/details/105096493
+http://www.cocoachina.com/articles/92649
+
+
+# optimization
+### scipy.optimize
+https://zhuanlan.zhihu.com/p/101645294
+
+### scipy.optimize.minimize
+https://www.jb51.net/article/180064.htm
+https://blog.csdn.net/qq_38048756/article/details/103208834
+
+### scipy.optimize.leastsq
+https://blog.csdn.net/weixin_44794704/article/details/89215978
+
+# 多继承
+https://blog.csdn.net/qq_26442553/article/details/81775449  
