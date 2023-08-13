@@ -7,7 +7,7 @@ import random
 from shutil import copy
 
 from src.utils.py_utils import AttrDict, ParamDict
-from src.utils.mpi_utils import update_with_mpi_config
+from src.utils.mpi_utils import mpi_fork, update_with_mpi_config, set_shutdown_hooks
 from src.utils.checkpoint_utils import save_cmd, save_git
 from src.utils.wandb import WandBLogger
 from src.args.param import parse_args
@@ -22,16 +22,22 @@ class Main:
 
         # set up params
         self.conf = conf = self.get_config() # get config
-        update_with_mpi_config(self.conf) # update with mpi config  
-
         self._hp = self._default_hparams() # default hparams
         self._hp.overwrite(self.conf.general) # overwrite with the config file
+
+        # set up mpi
+        mpi_fork(self._hp.cpu_workers) # run parallel code with mpi
+        update_with_mpi_config(self.conf) # update with mpi config  
+
+        # set up paths
         self._hp.exp_path = make_path(self.conf.exp_dir, args.path, args.prefix, args.new_dir)
         self.log_dir = log_dir = os.path.join(self._hp.exp_path, 'events')
 
         # set seeds, display, worker shutdown
         if args.seed != -1: self._hp.seed = args.seed   # override from command line if set
         set_seeds(self._hp.seed)
+        os.environ["DISPLAY"] = ":1"
+        set_shutdown_hooks()
 
         # set up logging
         if self.is_chef:
@@ -50,12 +56,13 @@ class Main:
 
         # resume
         if args.resume or self.conf.ckpt_path is not None:
-            start_epoch = self.resume(args.resume, self.conf.ckpt_path)
-            self._hp.n_warmup_steps = 0     # no warmup if we reload from checkpoint!
+            # todo resume
+            pass
 
     def _default_hparams(self):
         # default hparams
         default_dict = ParamDict({
+            'cpu_workers': 1,
             'seed': None, # example
             'agent': None,
         })
@@ -100,9 +107,17 @@ class Main:
         if self.args.gpu != -1:
             os.environ["CUDA_VISIBLE_DEVICES"] = str(self.args.gpu)
 
-    def get_exp_dir(self):
-        return os.environ['EXP_DIR']
 
+    def get_exp_dir(self):
+        if 'EXP_DIR' in os.environ:
+            return os.environ['EXP_DIR']
+        else:
+            return os.path.join(os.getcwd(), 'experiments')
+
+    # ==================== property ====================
+    @property
+    def is_chef(self):
+        return self.conf.mpi.is_chef
 
 # ==================== utils ====================
 def datetime_str():
@@ -129,6 +144,8 @@ def set_seeds(seed=0, cuda_deterministic=True):
     if torch.cuda.is_available() and cuda_deterministic:
         torch.backends.cudnn.benchmark = False
         torch.backends.cudnn.deterministic = True
+
+
 
 # ==================== main ====================
 if __name__ == "__main__":

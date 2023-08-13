@@ -5,8 +5,44 @@ import signal
 import sys
 import numpy as np
 import torch
+import os, subprocess, sys
 
-from spirl.utils.general_utils import AttrDict, joinListDictList
+from src.utils.py_utils import AttrDict
+from src.utils.general_utils import joinListDictList
+
+
+def mpi_fork(n, bind_to_core=False):
+    """
+    Re-launches the current script with workers linked by MPI.
+
+    Also, terminates the original process that launched it.
+
+    Taken almost without modification from the Baselines function of the
+    `same name`_.
+
+    .. _`same name`: https://github.com/openai/baselines/blob/master/baselines/common/mpi_fork.py
+
+    Args:
+        n (int): Number of process to split into.
+
+        bind_to_core (bool): Bind each MPI process to a core.
+    """
+    if n<=1: 
+        return
+    if os.getenv("IN_MPI") is None:
+        env = os.environ.copy()
+        env.update(
+            MKL_NUM_THREADS="1",
+            OMP_NUM_THREADS="1",
+            IN_MPI="1"
+        )
+        args = ["mpirun", "-np", str(n), "--oversubscribe"]
+        if bind_to_core:
+            args += ["-bind-to", "core"]
+        args += [sys.executable] + sys.argv
+        subprocess.check_call(args, env=env)
+        sys.exit()
+
 
 
 def update_with_mpi_config(conf):
