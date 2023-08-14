@@ -8,12 +8,12 @@ from shutil import copy
 
 from src.utils.py_utils import AttrDict, ParamDict
 from src.utils.mpi_utils import mpi_fork, update_with_mpi_config, set_shutdown_hooks
-from src.utils.checkpoint_utils import save_cmd, save_git
+from src.utils.checkpoint_utils import save_cmd, save_git, get_config_path, CheckpointHandler
 from src.utils.wandb import WandBLogger
 from src.args.param import parse_args
 
-WANDB_PROJECT_NAME = 'project_name'
-WANDB_ENTITY_NAME = 'entity_name'
+WANDB_PROJECT_NAME = 'test'
+WANDB_ENTITY_NAME = 'cehao'
 
 class Main:
     def __init__(self, args):
@@ -26,7 +26,7 @@ class Main:
         self._hp.overwrite(self.conf.general) # overwrite with the config file
 
         # set up mpi
-        mpi_fork(self._hp.cpu_workers) # run parallel code with mpi
+        mpi_fork(args.cpu_workers) # run parallel code with mpi
         update_with_mpi_config(self.conf) # update with mpi config  
 
         # set up paths
@@ -55,15 +55,14 @@ class Main:
         # 3. build sampler
 
         # resume
-        if args.resume or self.conf.ckpt_path is not None:
+        if args.resume:
             # todo resume
             pass
 
     def _default_hparams(self):
         # default hparams
         default_dict = ParamDict({
-            'cpu_workers': 1,
-            'seed': None, # example
+            'seed': 0, 
             'agent': None,
         })
         return default_dict
@@ -73,11 +72,12 @@ class Main:
 
         # paths
         conf.exp_dir = self.get_exp_dir()
-        conf.conf_path = os.path.join(conf.exp_dir, self.args.path)
+        conf.conf_path = get_config_path(self.args.path)
 
         # general and model configs
         print('loading from the config file {}'.format(conf.conf_path))
-        conf_module = importlib.import_module(self.args.path)
+        module_path = conf.conf_path.split('.')[0].replace('/', '.') # replace / with .
+        conf_module = importlib.import_module(module_path)
         conf.general = conf_module.configuration
         
         # read more configs
@@ -85,20 +85,19 @@ class Main:
         return conf
 
     def setup_logging(self, conf, log_dir):
-        if not self.args.dont_save:
-            print('Writing to the experiment directory: {}'.format(self._hp.exp_path))
-            if not os.path.exists(self._hp.exp_path):
-                os.makedirs(self._hp.exp_path)
-            save_cmd(self._hp.exp_path)
-            save_git(self._hp.exp_path)
-            save_config(conf.conf_path, os.path.join(self._hp.exp_path, "conf_" + datetime_str() + ".py"))
+        print('Writing to the experiment directory: {}'.format(self._hp.exp_path))
+        if not os.path.exists(self._hp.exp_path):
+            os.makedirs(self._hp.exp_path)
+        save_cmd(self._hp.exp_path)
+        save_git(self._hp.exp_path)
+        save_config(conf.conf_path, os.path.join(self._hp.exp_path, "conf_" + datetime_str() + ".py"))
 
-            # setup logger
-            exp_name = f"{os.path.basename(self.args.path)}_{self.args.prefix}" if self.args.prefix \
-                else os.path.basename(self.args.path)
-            logger = WandBLogger(exp_name, WANDB_PROJECT_NAME, entity=WANDB_ENTITY_NAME,
-                                    path=self._hp.exp_path, conf=conf) 
-            return logger
+        # setup logger
+        exp_name = f"{os.path.basename(self.args.path)}_{self.args.prefix}" if self.args.prefix \
+            else os.path.basename(self.args.path)
+        logger = WandBLogger(exp_name, WANDB_PROJECT_NAME, entity=WANDB_ENTITY_NAME,
+                                path=self._hp.exp_path, conf=conf) 
+        return logger
 
     def setup_device(self):
         # set up device
@@ -107,6 +106,17 @@ class Main:
         if self.args.gpu != -1:
             os.environ["CUDA_VISIBLE_DEVICES"] = str(self.args.gpu)
 
+    def resume(self, ckpt, path=None):
+        path = os.path.join(self._hp.exp_path, 'weights') if path is None else os.path.join(path, 'weights')
+        assert ckpt is not None  # need to specify resume epoch for loading checkpoint
+        weights_file = CheckpointHandler.get_resume_ckpt_file(ckpt, path)
+        # TODO(karl): check whether that actually loads the optimizer too
+        self.global_step, start_epoch, _ = \
+            CheckpointHandler.load_weights(weights_file, self.agent,
+                                           load_step=True, strict=self.args.strict_weight_loading)
+        self.agent.load_state(self._hp.exp_path)
+        self.agent.to(self.device)
+        return start_epoch
 
     def get_exp_dir(self):
         if 'EXP_DIR' in os.environ:

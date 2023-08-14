@@ -53,8 +53,6 @@ def update_with_mpi_config(conf):
     mpi_config.num_workers = MPI.COMM_WORLD.Get_size()
     conf.mpi = mpi_config
 
-    # update conf
-    conf.general.seed = conf.general.seed + rank
     return conf
 
 
