@@ -22,3 +22,9 @@ solution： https://github.com/openai/mujoco-py/issues/745
 ``` 
 sudo apt-get install libglew-dev
 ```
+
+## No such file or directory: 'patchelf'
+https://github.com/openai/mujoco-py/issues/652
+sudo apt-get install patchelf
+
+
