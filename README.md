@@ -11,6 +11,9 @@ which is required to install pyproject.toml-based projects
 for mpi4py;  https://stackoverflow.com/questions/28440834/error-when-installing-mpi4py
 sudo apt-get install libopenmpi-dev
 
+# cython
+pip install "cython<3"
+
 # gcc
 fatal error: GL/glew.h: No such file or directory  #include <GL/glew.h>
 distutils.errors.CompileError: command '/usr/bin/gcc' failed with exit code 1  
