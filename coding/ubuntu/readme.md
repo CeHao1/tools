@@ -33,3 +33,11 @@ https://my.oschina.net/u/4437065/blog/3153449
 (this link) https://gcore.com/learning/how-to-install-ubuntu-on-windows/
 Enter BIOS, select boot sequence. Disable security boot is necessary.
 Change the free space type and install.
+
+
+## 安装Nvidia driver 后网络消失
+进入上一个版本的内核，下载对应的一些组件。
+进入recover模式后安装对应 dpkg 即可完成修复。
+
+其实因为英伟达显卡需要更高版本的内核，但是他只下载了 N卡的部分，ubuntu 的内核没有被下载。所以需要手动下载。
+https://blog.csdn.net/weixin_44420419/article/details/133592805
