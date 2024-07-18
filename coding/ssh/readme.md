@@ -15,3 +15,7 @@ sshfs $USER@remote.example.com:/home/$USER/code ~/remote_code # mount from remot
 
 ## white list
 hosts.allow
+
+
+## windows mount
+https://blog.csdn.net/weixin_45936544/article/details/134223115
