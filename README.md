@@ -9,7 +9,9 @@ https://blog.csdn.net/thinszx/article/details/104601606
 # pyproject.toml-based
 which is required to install pyproject.toml-based projects
 for mpi4py;  https://stackoverflow.com/questions/28440834/error-when-installing-mpi4py
+```
 sudo apt-get install libopenmpi-dev
+```
 
 # cython
 pip install "cython<3"
