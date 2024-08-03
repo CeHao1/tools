@@ -19,3 +19,5 @@ hosts.allow
 
 ## windows mount
 https://blog.csdn.net/weixin_45936544/article/details/134223115
+
+https://phoenixnap.com/kb/sshfs
