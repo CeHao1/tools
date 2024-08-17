@@ -21,3 +21,8 @@ hosts.allow
 https://blog.csdn.net/weixin_45936544/article/details/134223115
 
 https://phoenixnap.com/kb/sshfs
+
+
+## openssl version missmatch
+https://github.com/modin-project/unidist/issues/314
+```conda install -c conda-forge openssh```
