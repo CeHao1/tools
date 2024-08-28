@@ -26,3 +26,7 @@ https://phoenixnap.com/kb/sshfs
 ## openssl version missmatch
 https://github.com/modin-project/unidist/issues/314
 ```conda install -c conda-forge openssh```
+
+## reset ssh
+read: Connection reset by peer
+```ssh-keygen -R 172.25.104.188```
