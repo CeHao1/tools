@@ -29,5 +29,11 @@ sudo apt-get install libglew-dev
 https://github.com/openai/mujoco-py/issues/652
 ``` 
 sudo apt-get install patchelf
-``` 
+```
+
+## gym version too high
+AttributeError: 'MazeEnv' object has no attribute 'sim'
+```
+gym                          0.17.2
+```
 
